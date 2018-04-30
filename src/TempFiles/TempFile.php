@@ -32,26 +32,26 @@ class TempFile {
 
     public function getLastLines(int $lines = 10, $buffer = 4096) : string {
         $f = fopen($this->full_path, "rb");
-        if (!$f) {
+        if ($f === false) {
             throw new Exception("Cant open file");
         }
 
         fseek($f, -1, SEEK_END);
-        if(fread($f, 1) != "\n") {
+        if (fread($f, 1) != "\n") {
             $lines -= 1;
         }
         $output = '';
         $chunk = '';
 
-        while(ftell($f) > 0 && $lines >= 0) {
+        while (ftell($f) > 0 && $lines >= 0) {
             $seek = min(ftell($f), $buffer);
             fseek($f, -$seek, SEEK_CUR);
-            $output = ($chunk = fread($f, $seek)).$output;
+            $output = ($chunk = fread($f, $seek)) . $output;
             fseek($f, -mb_strlen($chunk, '8bit'), SEEK_CUR);
             $lines -= substr_count($chunk, "\n");
         }
 
-        while($lines++ < 0) {
+        while ($lines++ < 0) {
             $output = substr($output, strpos($output, "\n") + 1);
         }
     
