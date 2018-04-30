@@ -49,7 +49,7 @@ class RecursiveFileListing {
         }
     }
 
-    private function isFileOk(string $path) : bool {
+    private function isFileOk(string $path) {
         if (count($this->filters) == 0) {
             return true;
         }

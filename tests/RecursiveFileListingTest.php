@@ -23,7 +23,7 @@ final class RecursiveFileListingTest extends TestCase {
 
     public function testFilterFiles() {
         $finder = new RecursiveFileListing(__DIR__ . "/RecFileListTestDir");
-        $files->addFilter('/.*\.txt$/i');
+        $finder->addFilter('/.*\.txt$/i');
         $files = $finder->scan();
 
         $this->assertEquals(2, count($files));
