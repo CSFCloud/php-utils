@@ -38,10 +38,8 @@ class RecursiveFileListing {
         foreach ($files as $filename) {
             if ($filename !== "." && $filename !== "..") {
                 $file_path = $dir . "/" . $filename;
-                if (is_file($file_path)) {
-                    if ($this->isFileOk($file_path)) {
-                        $this->files[] = $file_path;
-                    }
+                if (is_file($file_path) && $this->isFileOk($file_path)) {
+                    $this->files[] = $file_path;
                 } else if (is_dir($file_path)) {
                     $this->recursiveScan($file_path);
                 }
