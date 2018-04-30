@@ -41,7 +41,6 @@ class TempFile {
             $lines -= 1;
         }
         $output = '';
-        $chunk = '';
 
         while (ftell($f) > 0 && $lines >= 0) {
             $seek = min(ftell($f), $buffer);
