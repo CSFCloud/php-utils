@@ -29,4 +29,13 @@ final class RecursiveFileListingTest extends TestCase {
         $this->assertEquals(2, count($files));
     }
 
+    public function testFilterRemoval() {
+        $finder = new RecursiveFileListing(__DIR__ . "/RecFileListTestDir");
+        $finder->addFilter('/.*\.txt$/i');
+        $finder->clearFilters();
+        $files = $finder->scan();
+
+        $this->assertEquals(3, count($files));
+    }
+
 }
