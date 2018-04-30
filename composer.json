@@ -1,5 +1,5 @@
 {
-    "name": "CSFCloud/Utils",
+    "name": "csfcloud/utils",
     "description": "Utils package for frequently used classes and functions",
     "homepage": "https://github.com/CSFCloud/php-utils",
     "license": "MIT",
