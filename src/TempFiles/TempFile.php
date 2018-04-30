@@ -20,6 +20,10 @@ class TempFile {
         return $this->full_path;
     }
 
+    public function __toString(): string {
+        return $this->full_path;
+    }
+
     public function getText() : string {
         return file_get_contents($this->full_path);
     }

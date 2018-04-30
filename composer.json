@@ -18,7 +18,9 @@
         "mockery/mockery": "~0.8"
     },
     "autoload": {
-        "psr-4": {"CSFCloud\\": "src/"}
+        "psr-4": {
+            "CSFCloud\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
