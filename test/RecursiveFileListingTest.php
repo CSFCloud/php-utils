@@ -1,6 +1,6 @@
 <?php
 
-namespace WrapIt\Tests;
+namespace CSFCloud\Tests;
 
 use PHPUnit\Framework\TestCase;
 use CSFCloud\RecursiveFileListing;
