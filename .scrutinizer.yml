@@ -1,0 +1,29 @@
+build:
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=some-file'
+                coverage:
+                    file: 'some-file'
+                    format: 'clover'
+    environment:
+        php: '5.5.25'
+    nodes:
+        php54:
+            environment:
+                php: 5.4
+        php55:
+            environment:
+                php: 5.5
+        php56:
+            environment:
+                php: 5.6
+        php70:
+            environment:
+                php: 7.0
+        php71:
+            environment:
+                php: 7.1
+        php72:
+            environment:
+                php: 7.2
