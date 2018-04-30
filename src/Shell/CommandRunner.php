@@ -16,7 +16,7 @@ class CommandRunner {
         $this->tempmrg = new TempManager("csf_command_runner");
     }
 
-    public function run(int $type, string $dir, string $command, bool $sudo = false) {
+    public function run(int $type, string $dir, string $command, bool $sudo = false) : TempFile {
         $tempfile = $this->tempmrg->createFile();
         $temp_path = $tempfile->getPath();
 

@@ -12,23 +12,23 @@ class TempFile {
         $this->full_path = $path;
     }
 
-    public function getId() {
+    public function getId() : string {
         return $this->id;
     }
 
-    public function getPath() {
+    public function getPath() : string {
         return $this->full_path;
     }
 
-    public function __toString() {
+    public function __toString() : string {
         return $this->full_path;
     }
 
-    public function getText() {
+    public function getText() : string {
         return file_get_contents($this->full_path);
     }
 
-    public function getLastLines(int $lines = 10, $buffer = 4096) {
+    public function getLastLines(int $lines = 10, $buffer = 4096) : string {
         $f = fopen($this->full_path, "rb");
         fseek($f, -1, SEEK_END);
         if(fread($f, 1) != "\n") {

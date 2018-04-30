@@ -27,7 +27,7 @@ class TempManager {
         }
     }
 
-    private function IdToPath(string $id) {
+    private function IdToPath(string $id) : string {
         $path = $this->dir . "/" . $id;
         if (!file_exists($path)) {
             touch($path);
@@ -35,9 +35,9 @@ class TempManager {
         return $path;
     }
 
-    public function createFile() {
+    public function createFile() : TempFile {
         $id = uniqid("", true);
-        return $this->createFile($id, $this->IdToPath($id));
+        return new TempFile($id, $this->IdToPath($id));
     }
 
     public function getFile(string $id) : TempFile {

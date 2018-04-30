@@ -26,7 +26,7 @@ class RecursiveFileListing {
         $this->filters = [];
     }
 
-    public function scan() {
+    public function scan() : array {
         $this->files = [];
         $this->recursiveScan($this->root_dir);
         sort($this->files);
@@ -49,7 +49,7 @@ class RecursiveFileListing {
         }
     }
 
-    private function isFileOk(string $path) {
+    private function isFileOk(string $path) : bool {
         if (count($this->filters) == 0) {
             return true;
         }
