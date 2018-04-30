@@ -2,6 +2,8 @@
 
 namespace CSFCloud\TempFiles;
 
+use Exception;
+
 class TempFile {
 
     private $id;
@@ -30,6 +32,10 @@ class TempFile {
 
     public function getLastLines(int $lines = 10, $buffer = 4096) : string {
         $f = fopen($this->full_path, "rb");
+        if (!$f) {
+            throw new Exception("Cant open file");
+        }
+
         fseek($f, -1, SEEK_END);
         if(fread($f, 1) != "\n") {
             $lines -= 1;

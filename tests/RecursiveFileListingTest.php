@@ -11,7 +11,7 @@ final class RecursiveFileListingTest extends TestCase {
      * @expectedException Exception
      */
     public function testInvalidDirectory() {
-        $finder = new RecursiveFileListing(__DIR__ . "/not_existing_dir");
+        new RecursiveFileListing(__DIR__ . "/not_existing_dir");
     }
 
     public function testFindFiles() {

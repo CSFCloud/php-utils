@@ -4,6 +4,7 @@ namespace CSFCloud\Shell;
 
 use CSFCloud\TempFiles\TempManager;
 use CSFCloud\TempFiles\TempFile;
+use Exception;
 
 class CommandRunner {
 
