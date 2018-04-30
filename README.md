@@ -1,5 +1,9 @@
 # CSFCloud Utils
 
+[![Build Status](https://scrutinizer-ci.com/g/CSFCloud/php-utils/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CSFCloud/php-utils/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/CSFCloud/php-utils/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/CSFCloud/php-utils/?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/csfcloud/utils.svg)](https://packagist.org/packages/csfcloud/utils)
+
 ## Contents
 * Temporary file manager
 * Command executer
