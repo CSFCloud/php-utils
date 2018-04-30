@@ -7,9 +7,10 @@ use CSFCloud\RecursiveFileListing;
 
 final class RecursiveFileListingTest extends TestCase {
 
+    /**
+     * @expectedException Exception
+     */
     public function testInvalidDirectory() {
-        $this->expectException(Exception::class);
-
         $finder = new RecursiveFileListing(__DIR__ . "/not_existing_dir");
     }
 
@@ -17,10 +18,7 @@ final class RecursiveFileListingTest extends TestCase {
         $finder = new RecursiveFileListing(__DIR__ . "/RecFileListTestDir");
         $files = $finder->scan();
 
-        $this->assertEquals(
-            3,
-            count($files)
-        );
+        $this->assertEquals(3, count($files));
     }
 
     public function testFilterFiles() {
@@ -28,10 +26,7 @@ final class RecursiveFileListingTest extends TestCase {
         $files->addFilter('/.*\.txt$/i');
         $files = $finder->scan();
 
-        $this->assertEquals(
-            2,
-            count($files)
-        );
+        $this->assertEquals(2, count($files));
     }
 
 }
