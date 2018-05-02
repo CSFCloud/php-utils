@@ -9,8 +9,8 @@ class Storage {
     private $connection_string;
     private $container;
 
-    private $account_name;
-    private $account_key;
+    private $account_name = "";
+    private $account_key = "";
 
     private $exec;
 
@@ -57,7 +57,7 @@ class Storage {
         $cmd .= " -f " . escapeshellarg($file);
         $cmd .= " -n " . escapeshellarg($name);
 
-        if ($content_type != null) {
+        if ($content_type !== null) {
             $cmd .= " --content-type " . escapeshellarg($content_type);
         } else {
             $cmd .= " --content-type " . escapeshellarg(mime_content_type($file));
@@ -75,7 +75,7 @@ class Storage {
         //$signedStart = gmdate("Y-m-d\TH:i\Z", time());
         $signedExpiry = gmdate("Y-m-d\TH:i\Z", time() + $expire);
         $signedProtocol = "https";
-        $signedVersion = "2017-07-29";//"2016-05-31";
+        $signedVersion = "2017-07-29";
 
         $parameters = array();
         $parameters[] = $signedPermissions;
@@ -83,7 +83,7 @@ class Storage {
         $parameters[] = $signedExpiry;
         $parameters[] = "/blob/" . $this->account_name . "/" . $this->container . "/" . $name;
         $parameters[] = ""; // signedIdentifier
-        if ($ip == null) {
+        if ($ip === null) {
             $parameters[] = "";
         } else {
             $parameters[] = $ip;
@@ -111,7 +111,7 @@ class Storage {
         //$sas .= $buildOptQueryStr($signedStart, '&st=');
         $sas .= '&se=' . $signedExpiry;
         $sas .= '&sp=' . $signedPermissions;
-        if ($ip != null) {
+        if ($ip !== null) {
             $sas .= '&sip=' . $ip;
         }
         $sas .= '&spr=' . $signedProtocol;
