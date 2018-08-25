@@ -4,7 +4,7 @@ namespace CSFCloud\Azure;
 
 use CSFCloud\Shell\CommandRunner;
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
-use MicrosoftAzure\Storage\Blob\Models\CreateBlobOptions;
+use MicrosoftAzure\Storage\Blob\Models\CreateBlockBlobOptions;
 
 class Storage {
 
@@ -55,7 +55,7 @@ class Storage {
 
         $blobClient = BlobRestProxy::createBlobService($this->connection_string);
 
-        $options = new CreateBlobOptions();
+        $options = new CreateBlockBlobOptions();
         if ($content_type !== null) {
             $options->setContentType($content_type);
         } else {
