@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": "^7.0",
+        "microsoft/azure-storage-blob": "^1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.1.5"

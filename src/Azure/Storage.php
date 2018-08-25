@@ -3,6 +3,8 @@
 namespace CSFCloud\Azure;
 
 use CSFCloud\Shell\CommandRunner;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Blob\Models\CreateBlobOptions;
 
 class Storage {
 
@@ -47,11 +49,21 @@ class Storage {
     }
 
     public function uploadToBlob(string $file, string $name, string $content_type = null) {
-        if (!file_exists($file) || !is_file($file)) {
+        if (!file_exists($file) || !is_file($file) || !is_readable($file)) {
             throw new Exception("Invalid file");
         }
 
-        $cmd = "az storage blob upload";
+        $blobClient = new BlobRestProxy($this->connection_string);
+
+        $options = new CreateBlobOptions();
+        if ($content_type !== null) {
+            $options->setContentType($content_type);
+        } else {
+            $options->setContentType(mime_content_type($file));
+        }
+        $blobClient->createBlockBlob($this->container, $name, file_get_contents($file));
+
+        /*$cmd = "az storage blob upload";
 
         $cmd .= " -c " . escapeshellarg($this->container);
         $cmd .= " -f " . escapeshellarg($file);
@@ -67,7 +79,7 @@ class Storage {
 
         $log = $this->run($cmd);
 
-        return $log;
+        return $log;*/
     }
 
     public function GenerateBlobSas(string $name, int $expire = 5 * 60 * 60, string $ip = null) : string {
