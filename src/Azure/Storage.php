@@ -53,7 +53,7 @@ class Storage {
             throw new Exception("Invalid file");
         }
 
-        $blobClient = new BlobRestProxy($this->connection_string);
+        $blobClient = BlobRestProxy::createBlobService($this->connection_string);
 
         $options = new CreateBlobOptions();
         if ($content_type !== null) {
