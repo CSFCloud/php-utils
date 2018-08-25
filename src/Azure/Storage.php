@@ -61,7 +61,7 @@ class Storage {
         } else {
             $options->setContentType(mime_content_type($file));
         }
-        $blobClient->createBlockBlob($this->container, $name, file_get_contents($file));
+        $blobClient->createBlockBlob($this->container, $name, file_get_contents($file), $options);
 
         /*$cmd = "az storage blob upload";
 
