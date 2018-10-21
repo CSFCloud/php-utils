@@ -16,7 +16,9 @@ class TempManager {
             throw new Exception("The temp context must be an alphanumeric string");
         }
         if (!file_exists(self::TEMP_DIR)) {
-            mkdir(self::TEMP_DIR, 0777, true);
+            if (!mkdir(self::TEMP_DIR, 0777, true)) {
+                throw new Exception("Creating new directory failed (" . self::TEMP_DIR . ")");
+            }
         }
         if (is_writable(self::TEMP_DIR)) {
             $this->dir = self::TEMP_DIR . "/" . $context;
